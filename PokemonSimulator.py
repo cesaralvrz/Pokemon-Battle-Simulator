@@ -72,8 +72,8 @@ class Pokemon:
                     string_2_attack = '\nIts not very effective...'
 
 
-        # Now for the actual fighting...
-        # Continue while pokemon still have health
+        
+        # While cicle until de pokemon have health
         while (self.bars > 0) and (Pokemon2.bars > 0):
             # Print the health of each pokemon
             print(self.name ,"health:", self.health)
@@ -132,9 +132,6 @@ class Pokemon:
             if self.bars <= 0:
                 delay_print("\n..." + self.name + ' fainted.')
                 break
-
-        #money = np.random.choice(5000)
-        #delay_print("nOpponent paid you $: "money.)
 
 
 
