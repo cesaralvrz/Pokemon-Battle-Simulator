@@ -3,10 +3,8 @@ import numpy as np
 import sys
 
 # Delay printing
-
 def delay_print(s):
-    # print one character at a time
-    # https://stackoverflow.com/questions/9246076/how-to-print-one-character-at-a-time-on-one-line
+    # Print one character at a time
     for c in s:
         sys.stdout.write(c)
         sys.stdout.flush()
@@ -105,7 +103,7 @@ class Pokemon:
                 delay_print("\n..." + Pokemon2.name + ' fainted.')
                 break
 
-            # Pokemon2s turn
+            # Pokemon2 turn
 
             print("Go",  Pokemon2.name, "!")
             for i, x in enumerate(Pokemon2.moves):
