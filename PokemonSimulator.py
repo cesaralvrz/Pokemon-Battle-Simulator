@@ -12,7 +12,7 @@ def delay_print(s):
         sys.stdout.flush()
         time.sleep(0.05)
 
-# Create the class
+# Creation of the Pokemon
 class Pokemon:
     def __init__(self, name, types, moves, EVs, health='==================='):
         # save variables as attributes
@@ -22,13 +22,13 @@ class Pokemon:
         self.attack = EVs['ATTACK']
         self.defense = EVs['DEFENSE']
         self.health = health
-        self.bars = 20 # Amount of health bars
+        self.bars = 20 #Number of health bars
 
 
     def fight(self, Pokemon2):
-        # Allow two pokemon to fight each other
+        #Allow two pokemon to fight each other
 
-        # Print fight information
+        # Fighting text
         print("-----POKEMONE BATTLE-----")
         print("Pokemon 1:", self.name)
         print("TYPE/", self.types)
@@ -44,7 +44,7 @@ class Pokemon:
 
         time.sleep(2)
 
-        # Consider type advantages
+        # Type advantages
         version = ['Fire', 'Water', 'Grass']
         for i,k in enumerate(version):
             if self.types == k:
