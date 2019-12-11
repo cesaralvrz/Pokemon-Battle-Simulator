@@ -20,7 +20,8 @@ class Pokemon:
         self.attack = EVs['ATTACK']
         self.defense = EVs['DEFENSE']
         self.health = health
-        self.bars = 20 #Number of health bars
+        #Define the number of health bars
+        self.bars = 20 
 
 
     def fight(self, Pokemon2):
@@ -42,7 +43,7 @@ class Pokemon:
 
         time.sleep(2)
 
-        # Type advantages
+        # Type advantages consideration
         version = ['Fire', 'Water', 'Grass']
         for i,k in enumerate(version):
             if self.types == k:
@@ -85,7 +86,7 @@ class Pokemon:
             time.sleep(1)
             delay_print(string_1_attack)
 
-            # Determine damage
+            # Determine how much damage inflicts
             Pokemon2.bars -= self.attack
             Pokemon2.health = ""
 
@@ -103,8 +104,7 @@ class Pokemon:
                 delay_print("\n..." + Pokemon2.name + ' fainted.')
                 break
 
-            # Pokemon2 turn
-
+            # Turn of the Second Pokemon
             print("Go",  Pokemon2.name, "!")
             for i, x in enumerate(Pokemon2.moves):
                 print(i+1, x)
