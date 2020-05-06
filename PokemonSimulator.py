@@ -2,32 +2,32 @@ import time
 import numpy as np
 import sys
 
-# Delay printing
+# Delay en cada prit
 def delay_print(s):
-    # Print one character at a time
+    # Imprimir personaje uno por uno
     for c in s:
         sys.stdout.write(c)
         sys.stdout.flush()
         time.sleep(0.05)
 
-# Creation of the Pokemon
+# Creación de Pokémon
 class Pokemon:
     def __init__(self, name, types, moves, EVs, health='==================='):
-        # save variables as attributes
+        # Guardar variables como atributos
         self.name = name
         self.types = types
         self.moves = moves
         self.attack = EVs['ATTACK']
         self.defense = EVs['DEFENSE']
         self.health = health
-        #Define the number of health bars
+        # Definir número de barras de vida
         self.bars = 20 
 
 
     def fight(self, Pokemon2):
-        #Allow two pokemon to fight each other
+        # Permiso para que dos Pokémon combatan
 
-        # Fighting text
+        # Texto de la pelea
         print("-----POKEMONE BATTLE-----")
         print("Pokemon 1:", self.name)
         print("TYPE/", self.types)
@@ -43,16 +43,16 @@ class Pokemon:
 
         time.sleep(2)
 
-        # Type advantages consideration
+        # Ventajas de tipo
         version = ['Fire', 'Water', 'Grass']
         for i,k in enumerate(version):
             if self.types == k:
-                # Both are same type
+                # Cuando son del mismo tipo
                 if Pokemon2.types == k:
                     string_1_attack = '\nIts not very effective...'
                     string_2_attack = '\nIts not very effective...'
 
-                # Pokemon2 is STRONG
+                # Cuando el Pokémon2 es superior
                 if Pokemon2.types == version[(i+1)%3]:
                     Pokemon2.attack *= 2
                     Pokemon2.defense *= 2
@@ -61,7 +61,7 @@ class Pokemon:
                     string_1_attack = '\nIts not very effective...'
                     string_2_attack = '\nIts super effective!'
 
-                # Pokemon2 is WEAK
+                # Cuando el Pokémon2 es inferior
                 if Pokemon2.types == version[(i+2)%3]:
                     self.attack *= 2
                     self.defense *= 2
@@ -72,9 +72,9 @@ class Pokemon:
 
 
         
-        # While cicle until de pokemon have health
+        # Bucle while mientras tengan vida cada Pokémon
         while (self.bars > 0) and (Pokemon2.bars > 0):
-            # Print the health of each pokemon
+            # Imprimir la vida de cada Pokémon
             print(self.name ,"health:", self.health)
             print(Pokemon2.name ,"health:", Pokemon2.health)
 
@@ -86,11 +86,11 @@ class Pokemon:
             time.sleep(1)
             delay_print(string_1_attack)
 
-            # Determine how much damage inflicts
+            # Determinar cuanto daño hacer
             Pokemon2.bars -= self.attack
             Pokemon2.health = ""
 
-            # Add back bars plus defense boost
+            # Añadir barras en plus de defensa
             for j in range(int(Pokemon2.bars+.1*Pokemon2.defense)):
                 Pokemon2.health += "="
 
@@ -99,12 +99,12 @@ class Pokemon:
             print(Pokemon2.name ,"health:", Pokemon2.health)
             time.sleep(.5)
 
-            # Check to see if Pokemon fainted
+            # Verificar si el Pokémon 'fainted'
             if Pokemon2.bars <= 0:
                 delay_print("\n..." + Pokemon2.name + ' fainted.')
                 break
 
-            # Turn of the Second Pokemon
+            # Turno del segundo Pokémon
             print("Go",  Pokemon2.name, "!")
             for i, x in enumerate(Pokemon2.moves):
                 print(i+1, x)
@@ -113,11 +113,11 @@ class Pokemon:
             time.sleep(1)
             delay_print(string_2_attack)
 
-            # Determine damage
+            # Determinar daño
             self.bars -= Pokemon2.attack
             self.health = ""
 
-            # Add back bars plus defense boost
+            # Añadir barras en plus de defensa
             for j in range(int(self.bars+.1*self.defense)):
                 self.health += "="
 
@@ -126,7 +126,7 @@ class Pokemon:
             print(Pokemon2.name ,"health:", Pokemon2.health)
             time.sleep(.5)
 
-            # Check to see if Pokemon fainted
+            # Verificar si el Pokémon 'fainted'
             if self.bars <= 0:
                 delay_print("\n..." + self.name + ' fainted.')
                 break
@@ -137,7 +137,7 @@ class Pokemon:
 
 
 if __name__ == '__main__':
-    #Create Pokemon
+    # Creamos cada Pokémon
     Charizard = Pokemon('Charizard', 'Fire', ['Flamethrower', 'Fly', 'Blast Burn', 'Fire Punch'], {'ATTACK':12, 'DEFENSE': 8})
     Blastoise = Pokemon('Blastoise', 'Water', ['Water Gun', 'Bubblebeam', 'Hydro Pump', 'Surf'],{'ATTACK': 10, 'DEFENSE':10})
     Venusaur = Pokemon('Venusaur', 'Grass', ['Vine Wip', 'Razor Leaf', 'Earthquake', 'Frenzy Plant'],{'ATTACK':8, 'DEFENSE':12})
@@ -151,4 +151,4 @@ if __name__ == '__main__':
     Ivysaur = Pokemon('Ivysaur\t', 'Grass', ['Vine Wip', 'Razor Leaf', 'Bullet Seed', 'Leech Seed'],{'ATTACK':4, 'DEFENSE':6})
 
 
-    Charizard.fight(Blastoise) # Get them to fight
+    Charizard.fight(Blastoise) # Empezar batalla
